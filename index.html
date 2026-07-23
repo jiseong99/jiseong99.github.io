@@ -53,12 +53,12 @@
   .hero-inner{display:flex; align-items:flex-start; gap:40px;}
   .hero-text{flex:1; min-width:0;}
   .avatar{
-    width:132px; height:132px; border-radius:50%; object-fit:cover;
+    width:200px; height:200px; border-radius:50%; object-fit:cover;
     border:2px solid var(--border); flex-shrink:0; background:var(--bg-soft);
   }
   @media (max-width:640px){
-    .hero-inner{flex-direction:column-reverse; gap:24px;}
-    .avatar{width:100px; height:100px;}
+    .hero-inner{flex-direction:column; gap:24px;}
+    .avatar{width:130px; height:130px;}
   }
   .hero .eyebrow{
     color:var(--accent); font-size:13px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
@@ -208,6 +208,7 @@
 <div class="wrap">
   <section class="hero">
     <div class="hero-inner">
+      <img class="avatar" src="Jiseong_han.jpg" alt="Ji-Seong Han">
       <div class="hero-text">
         <div class="eyebrow">AI / ML · Data Engineering</div>
         <h1>I define problems with data,<br>and validate answers with models.</h1>
@@ -232,7 +233,6 @@
           <span class="tag">SQL / Data Pipelines</span>
         </div>
       </div>
-      <img class="avatar" src="Jiseong_han.jpg" alt="Ji-Seong Han">
     </div>
   </section>
 
