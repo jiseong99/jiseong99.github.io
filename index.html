@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ji-Seong Han | AI / Data Portfolio</title>
+<style>
+  :root{
+    --bg: #0b0d12;
+    --bg-soft: #12151c;
+    --card: #161a23;
+    --border: #262b36;
+    --text: #e8eaf0;
+    --text-dim: #9aa2b1;
+    --accent: #6ee7c2;
+    --accent-soft: rgba(110,231,194,0.12);
+    --accent2: #7aa2ff;
+    --radius: 14px;
+    --maxw: 980px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Arial, sans-serif;
+    line-height:1.6;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  /* nav */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,13,18,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .nav-inner .logo{font-weight:700; letter-spacing:0.3px;}
+  .nav-inner nav a{
+    color:var(--text-dim); text-decoration:none; font-size:14px; margin-left:22px;
+    transition:color .15s;
+  }
+  .nav-inner nav a:hover{color:var(--accent);}
+
+  /* hero */
+  .hero{padding:88px 0 56px;}
+  .hero .eyebrow{
+    color:var(--accent); font-size:13px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .hero h1{font-size:42px; margin:0 0 14px; line-height:1.25;}
+  .hero p.lead{color:var(--text-dim); font-size:17px; max-width:640px; margin:0 0 28px;}
+  .hero .links{display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:10px 18px; border-radius:999px; font-size:14px; font-weight:600;
+    text-decoration:none; border:1px solid var(--border); transition:all .15s;
+  }
+  .btn.primary{background:var(--accent); color:#0b0d12; border-color:var(--accent);}
+  .btn.primary:hover{opacity:.88;}
+  .btn.ghost{color:var(--text); background:transparent;}
+  .btn.ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:28px;}
+  .tag{
+    font-size:12.5px; color:var(--text-dim); background:var(--bg-soft);
+    border:1px solid var(--border); padding:6px 12px; border-radius:999px;
+  }
+
+  /* section headings */
+  section{padding:48px 0;}
+  section h2{
+    font-size:13px; text-transform:uppercase; letter-spacing:1.5px; color:var(--accent2);
+    font-weight:700; margin:0 0 6px;
+  }
+  section .section-title{font-size:26px; margin:0 0 36px; font-weight:700;}
+
+  /* project cards */
+  .project{
+    background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    padding:28px; margin-bottom:20px;
+  }
+  .project-top{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .project h3{font-size:19px; margin:0;}
+  .project .sub{color:var(--text-dim); font-size:13.5px; margin-top:4px;}
+  .project .links{display:flex; gap:10px; flex-shrink:0;}
+  .project .links a{
+    font-size:13px; font-weight:600; text-decoration:none; color:var(--accent);
+    border:1px solid var(--border); padding:6px 12px; border-radius:8px; white-space:nowrap;
+  }
+  .project .links a:hover{border-color:var(--accent);}
+  .project p.desc{margin:14px 0; color:var(--text); font-size:14.5px;}
+  .project .highlight{
+    display:inline-block; background:var(--accent-soft); color:var(--accent);
+    font-size:13px; font-weight:600; padding:8px 14px; border-radius:10px; margin:6px 0 14px;
+  }
+  .project .stack{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;}
+  .project .stack span{
+    font-size:12px; color:var(--text-dim); background:var(--bg-soft); border:1px solid var(--border);
+    padding:4px 10px; border-radius:999px;
+  }
+
+  /* experience */
+  .exp-item{
+    background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px 26px; margin-bottom:16px;
+  }
+  .exp-top{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;
+    margin-bottom:4px;
+  }
+  .exp-item h3{font-size:17px; margin:0;}
+  .exp-item .org{color:var(--accent2); font-size:13.5px; margin-top:3px;}
+  .exp-item .meta{color:var(--text-dim); font-size:12.5px; white-space:nowrap;}
+  .exp-item p.desc{margin:12px 0 10px; font-size:14px; color:var(--text);}
+  .exp-item .stack{display:flex; flex-wrap:wrap; gap:6px;}
+  .exp-item .stack span{
+    font-size:12px; color:var(--text-dim); background:var(--bg-soft); border:1px solid var(--border);
+    padding:4px 10px; border-radius:999px;
+  }
+
+  /* background: education / certifications */
+  .bg-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:36px;
+  }
+  .bg-col h4{
+    font-size:14px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px;
+    margin:0 0 16px; font-weight:700;
+  }
+  .bg-item{
+    background:var(--card); border:1px solid var(--border); border-radius:12px;
+    padding:18px 20px; margin-bottom:12px;
+  }
+  .bg-item{display:flex; justify-content:space-between; align-items:flex-start; gap:14px;}
+  .bg-item .name{font-size:15px; font-weight:700; margin-bottom:3px;}
+  .bg-item .org{font-size:13.5px; color:var(--accent2); margin-bottom:3px;}
+  .bg-item .meta{font-size:12.5px; color:var(--text-dim);}
+  .cert-link{
+    flex-shrink:0; font-size:12.5px; font-weight:600; color:var(--accent);
+    text-decoration:none; border:1px solid var(--border); padding:6px 12px; border-radius:8px;
+    white-space:nowrap; margin-top:2px; transition:border-color .15s;
+  }
+  .cert-link:hover{border-color:var(--accent);}
+  .exp-top .cert-link{margin-top:0;}
+  .exp-meta-wrap{display:flex; flex-direction:column; align-items:flex-end; gap:8px;}
+  @media (max-width:700px){
+    .bg-grid{grid-template-columns:1fr;}
+  }
+
+  /* more projects */
+  .more-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:12px;
+  }
+  .more-card{
+    background:var(--bg-soft); border:1px solid var(--border); border-radius:10px;
+    padding:16px 18px; text-decoration:none; display:block; transition:border-color .15s;
+  }
+  .more-card:hover{border-color:var(--accent2);}
+  .more-card .t{font-size:14.5px; font-weight:600; color:var(--text); margin-bottom:4px;}
+  .more-card .d{font-size:12.5px; color:var(--text-dim);}
+
+  footer{
+    border-top:1px solid var(--border); padding:40px 0 60px; margin-top:40px;
+    color:var(--text-dim); font-size:13.5px;
+  }
+  footer a{color:var(--accent2); text-decoration:none;}
+
+  @media (max-width:600px){
+    .hero h1{font-size:32px;}
+    .nav-inner nav a{margin-left:14px; font-size:13px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">Ji-Seong Han</div>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#background">Background</a>
+      <a href="#more">More</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">AI / ML · Data Engineering</div>
+    <h1>I define problems with data,<br>and validate answers with models.</h1>
+    <p class="lead">
+      From quant research and phishing detection to LLM fine-tuning, recommendation systems,
+      manufacturing quality control, and B2B sales prediction — a collection of projects applying
+      machine learning and deep learning to real data and real business problems.
+    </p>
+    <div class="links">
+      <a class="btn primary" href="https://github.com/jiseong99" target="_blank" rel="noopener">View GitHub</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/jiseong99/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="Jiseong_Han_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a class="btn ghost" href="mailto:hanjiseong31@gmail.com">Send an Email</a>
+    </div>
+    <div class="tags">
+      <span class="tag">Python</span>
+      <span class="tag">PyTorch / scikit-learn</span>
+      <span class="tag">XGBoost · LightGBM · CatBoost</span>
+      <span class="tag">LLM Fine-tuning (LoRA/QLoRA)</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">React / TypeScript</span>
+      <span class="tag">SQL / Data Pipelines</span>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Featured Work</h2>
+    <div class="section-title">Featured Projects</div>
+
+    <!-- 1. Quant-Research -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <h3>Quant Research Dashboard</h3>
+          <div class="sub">AI-based Quant Research Tool · Personal Project</div>
+        </div>
+        <div class="links">
+          <a href="https://quant-research-1.onrender.com" target="_blank" rel="noopener">Live Demo</a>
+          <a href="https://github.com/jiseong99/Quant-Research" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="highlight">50+ engineered features + 3-class XGBoost prediction + RAG-based news analysis</div>
+      <p class="desc">
+        Collects US and Korean stock prices plus macro indicators (VIX, Treasury yield, etc.) via Yahoo Finance
+        and engineers 50+ momentum, trend, volatility, and volume features. A walk-forward validated XGBoost model
+        predicts 5-day forward Up/Neutral/Down moves. FAISS-based news retrieval combined with LLaMA 3.3-70B (via Groq)
+        generates cited market analysis reports, while a pandas-based backtesting engine benchmarks strategy performance
+        against Buy & Hold.
+      </p>
+      <div class="stack">
+        <span>FastAPI</span><span>XGBoost</span><span>SHAP</span><span>FAISS</span>
+        <span>Groq LLaMA 3.3-70B</span><span>React + TypeScript</span><span>Docker / Render</span>
+      </div>
+    </div>
+
+    <!-- 2. phishing -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <h3>Phishing Website Detection (ML/DL Framework)</h3>
+          <div class="sub">ASU CSE 572 Data Mining Project</div>
+        </div>
+        <div class="links">
+          <a href="https://github.com/jiseong99/phishing-url-detection-ml-dl-framework" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="highlight">Stacking Ensemble Recall 0.967 · xDeepFM Recall 0.993</div>
+      <p class="desc">
+        Built a real-time phishing detection system using 112 URL, host, and TLS certificate features across
+        88,647 samples. Compared tree-based models (Random Forest, XGBoost, LightGBM, CatBoost) against deep
+        learning models (MLP, TabNet, DeepFM, xDeepFM), and optimized Soft Voting and Stacking ensembles with
+        Recall as the primary metric to minimize false negatives. Also shipped a Streamlit SOC dashboard designed
+        for analyst-facing, deployment-ready use.
+      </p>
+      <div class="stack">
+        <span>scikit-learn</span><span>XGBoost/LightGBM/CatBoost</span><span>TabNet · DeepFM</span>
+        <span>Optuna</span><span>Streamlit</span>
+      </div>
+    </div>
+
+    <!-- 3. text-to-svg -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <h3>Text-to-SVG Generation with Fine-Tuned LLMs</h3>
+          <div class="sub">ASU CSE 575 Final Project</div>
+        </div>
+        <div class="links">
+          <a href="https://github.com/jiseong99/text-to-svg-llm-finetuning" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="highlight">Mistral 7B: CLIP Score 0.274, ~9 sec per prompt (orders of magnitude faster than diffusion methods)</div>
+      <p class="desc">
+        Fine-tuned open-source LLMs — LLaMA (8B/12B), Mistral 7B, Gemma, and Qwen — with LoRA/QLoRA to generate
+        SVG markup directly from natural language descriptions. Trained on the 2.17M-pair text2svg-stack dataset,
+        using 4-bit quantization and gradient checkpointing to make training feasible on limited academic hardware.
+        Fine-tuned Mistral 7B produced syntactically valid, semantically aligned SVGs competitive with diffusion-based
+        methods (SVGDreamer, DiffSketch) while generating results dramatically faster.
+      </p>
+      <div class="stack">
+        <span>LoRA / QLoRA</span><span>BitsAndBytes</span><span>HuggingFace</span><span>CLIP Evaluation</span>
+      </div>
+    </div>
+
+    <!-- 4. VOD -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <h3>HelloPick! VOD Recommendation Algorithm</h3>
+          <div class="sub">LG HelloVision Final Project (Team)</div>
+        </div>
+        <div class="links">
+          <a href="https://github.com/jiseong99/VOD-Reommendation-Algorithm" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="highlight">Designed a custom Extended SVDpp model · Precision@10 of 0.077</div>
+      <p class="desc">
+        The dataset had no explicit rating column, so an initial watch-rate-based proxy was used — but it produced
+        weak Precision@k. Diagnosed the root cause and designed an Extended SVDpp model that folds six engineered
+        signals (recency weighting, series completion rate, content popularity, and more) directly into the model's
+        hyperparameters, optimized via Optuna. Built the full pipeline from TMDB poster crawling to collaborative
+        filtering model comparison (ALS, SVD, SVDpp, etc.) using the Surprise library.
+      </p>
+      <div class="stack">
+        <span>Selenium</span><span>Surprise</span><span>SVDpp</span><span>Optuna</span>
+      </div>
+    </div>
+
+    <!-- 5. Manufacturing -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <h3>Smart Quality Management for Injection Molding</h3>
+          <div class="sub">Manufacturing Data Hackathon (Team IESC)</div>
+        </div>
+        <div class="links">
+          <a href="https://github.com/jiseong99/Manufacturing-Data-Hackathon-Smart-Quality-Management-Process" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="highlight">Yield improved 73% → 79%, error rate reduced 16% → 1.5%</div>
+      <p class="desc">
+        Worked with 26.8M rows of injection molding process data that had no quality labels. Generated
+        Normal/Abnormal pseudo labels using control-chart-driven analysis, then trained a Recall-optimized
+        predictive model with PyCaret AutoML under extreme class imbalance (1M normal vs. 28K abnormal).
+        Combined this with ANSI/ASQ Z1.4 statistical sampling inspection and validated the pipeline against
+        real manufacturing KPIs — yield and cost — rather than offline accuracy alone.
+      </p>
+      <div class="stack">
+        <span>PyCaret</span><span>Control Chart</span><span>PCA</span><span>GridSearch</span>
+      </div>
+    </div>
+
+    <!-- 6. B2B MQL -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <h3>B2B MQL Sales Opportunity Prediction</h3>
+          <div class="sub">LG Aimers Phase 2 (Ranked 63rd of 844 teams)</div>
+        </div>
+        <div class="links">
+          <a href="https://github.com/jiseong99/B2B-MQL-Sales-Predict" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="highlight">F1 Score 0.765 · 63rd of 844 teams</div>
+      <p class="desc">
+        Built an AI model to identify Marketing Qualified Leads likely to convert into sales opportunities.
+        With an 11:1 class imbalance, addressed information loss from undersampling using a 20-subset soft-voting
+        ensemble, and identified an outlier customer ID that was biasing training — removing it pushed the
+        public score from the 0.2 range up to the 0.7 range.
+      </p>
+      <div class="stack">
+        <span>XGBoost</span><span>PyCaret AutoML</span><span>Undersampling</span><span>Soft Voting</span>
+      </div>
+    </div>
+
+    <!-- 7. WICS -->
+    <div class="project">
+      <div class="project-top">
+        <div>
+          <h3>SafeCase — Nonprofit Case Management Platform</h3>
+          <div class="sub">Opportunity Hack 2026 · WiCS ASU Team K-Hack</div>
+        </div>
+        <div class="links">
+          <a href="https://20-k-hack.vercel.app" target="_blank" rel="noopener">Live Demo</a>
+          <a href="https://github.com/jiseong99/WICS-Hackathon" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="highlight">AI-native case management platform deployable for under $30/month</div>
+      <p class="desc">
+        Built as a team to replace enterprise case management tools ($50–150/user/month) for nonprofits.
+        Implemented a suite of AI features including Photo-to-Intake (Claude Vision extracts fields from a
+        photographed paper form), an AI assistant bot for natural-language queries, automatic multilingual
+        translation, and real-time anomaly detection.
+      </p>
+      <div class="stack">
+        <span>Next.js</span><span>Supabase</span><span>Anthropic Claude API</span><span>Vercel</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Training</h2>
+    <div class="section-title">Bootcamps &amp; Programs</div>
+
+    <div class="exp-item">
+      <div class="exp-top">
+        <div>
+          <h3>Tableau Bootcamp Trainee</h3>
+          <div class="org">Tableau Bootcamp</div>
+        </div>
+        <div class="exp-meta-wrap">
+          <div class="meta">Oct 2024 – Nov 2024 · 2 mos · Remote</div>
+          <a class="cert-link" href="certs/tableau-certificate.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+        </div>
+      </div>
+      <p class="desc">
+        Completed a two-week intensive program on Tableau fundamentals and applications.
+        Built interactive dashboards using real-world datasets.
+      </p>
+      <div class="stack">
+        <span>Tableau</span><span>Data Visualization</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-top">
+        <div>
+          <h3>LG Aimers Bootcamp Trainee</h3>
+          <div class="org">LG Aimers Bootcamp (Cohort 4)</div>
+        </div>
+        <div class="exp-meta-wrap">
+          <div class="meta">Jan 2024 – Feb 2024 · 2 mos · Remote</div>
+          <a class="cert-link" href="certs/lg-aimers-certificate.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+        </div>
+      </div>
+      <p class="desc">
+        Developed an AI model to predict sales opportunity conversion from MQL data, ranking 63rd
+        out of 844 teams. Applied undersampling and ensemble methods to handle severe class imbalance.
+      </p>
+      <div class="stack">
+        <span>Pandas</span><span>Python</span><span>+3 more skills</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-top">
+        <div>
+          <h3>LG Hellovision DX DataSchool Bootcamp Trainee</h3>
+          <div class="org">LG Hellovision DX Data School Bootcamp</div>
+        </div>
+        <div class="exp-meta-wrap">
+          <div class="meta">Jun 2023 – Dec 2023 · 7 mos · Seoul, South Korea (on-site)</div>
+          <a class="cert-link" href="certs/lg-hellovision-dx-datastudio-certificate.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+        </div>
+      </div>
+      <p class="desc">
+        Completed intensive training in data preprocessing, visualization, and machine learning.
+        Gained hands-on proficiency across Python, R, SQL/NoSQL, Tableau, and related tooling,
+        culminating in the HelloPick! VOD recommendation final project.
+      </p>
+      <div class="stack">
+        <span>Python</span><span>Pandas</span><span>R</span><span>SQL/NoSQL</span><span>Tableau</span><span>+10 more skills</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="background">
+    <h2>Background</h2>
+    <div class="section-title">Education &amp; Certifications</div>
+    <div class="bg-grid">
+      <div class="bg-col">
+        <h4>Education</h4>
+        <div class="bg-item">
+          <div>
+            <div class="name">Arizona State University</div>
+            <div class="org">M.S. in Data Science (Computing &amp; Decision Analytics)</div>
+            <div class="meta">Jan 2025 – Dec 2026</div>
+          </div>
+        </div>
+        <div class="bg-item">
+          <div>
+            <div class="name">Soongsil University</div>
+            <div class="org">B.S. in Industrial and Information Systems Engineering</div>
+            <div class="meta">Mar 2018 – Aug 2024</div>
+          </div>
+          <a class="cert-link" href="certs/soongsil-graduation-certificate.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+        </div>
+      </div>
+      <div class="bg-col">
+        <h4>Certifications</h4>
+        <div class="bg-item">
+          <div>
+            <div class="name">SQLD — Structured Query Language Developer</div>
+            <div class="org">Korea Data Agency (K-DATA)</div>
+            <div class="meta">Issued Apr 2024 · ID SQLD-052006540</div>
+          </div>
+          <a class="cert-link" href="certs/sqld-certificate.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+        </div>
+        <div class="bg-item">
+          <div>
+            <div class="name">Big Data Analyst Certification</div>
+            <div class="org">Korea Data Agency (K-DATA)</div>
+            <div class="meta">Issued Jan 2024 · ID BAE-007001384</div>
+          </div>
+          <a class="cert-link" href="certs/big-data-analyst-certificate.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+        </div>
+        <div class="bg-item">
+          <div>
+            <div class="name">ADsP — Advanced Data Analytics Semi-Professional</div>
+            <div class="org">Korea Data Agency (K-DATA)</div>
+            <div class="meta">Issued Sep 2023 · ID ADsP-038006442</div>
+          </div>
+          <a class="cert-link" href="certs/adsp-certificate.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="more">
+    <h2>Also Built</h2>
+    <div class="section-title">Other Projects</div>
+    <div class="more-grid">
+      <a class="more-card" href="https://github.com/jiseong99/Graduation-Project" target="_blank" rel="noopener">
+        <div class="t">Graduation Project</div>
+        <div class="d">Undergraduate capstone — site selection for combined logistics gas stations</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/Data-Mining-Project" target="_blank" rel="noopener">
+        <div class="t">Data Mining Project</div>
+        <div class="d">Diabetes diagnosis prediction model</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/FutureSocietyChallenge-Hackathon" target="_blank" rel="noopener">
+        <div class="t">Future Society Challenge Hackathon</div>
+        <div class="d">Ideas to reduce roadkill and strengthen road ecosystem safety</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/VOD-Reommendation-Frontend" target="_blank" rel="noopener">
+        <div class="t">VOD Recommendation — Frontend</div>
+        <div class="d">HelloPick! web service frontend</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/VOD-Reommendation-Backend" target="_blank" rel="noopener">
+        <div class="t">VOD Recommendation — Backend</div>
+        <div class="d">HelloPick! web service backend</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/BigData_Certification" target="_blank" rel="noopener">
+        <div class="t">BigData Certification</div>
+        <div class="d">Study notes for the Korean Big Data Analytics certification</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/Data_Analytics" target="_blank" rel="noopener">
+        <div class="t">Data Analytics</div>
+        <div class="d">Coursework — Data Analyst major elective</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/Tableau" target="_blank" rel="noopener">
+        <div class="t">Tableau</div>
+        <div class="d">Tableau fundamentals practice</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/FrontEND" target="_blank" rel="noopener">
+        <div class="t">Front-End Study</div>
+        <div class="d">Front-end fundamentals</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/CSE572" target="_blank" rel="noopener">
+        <div class="t">CSE 572</div>
+        <div class="d">ASU Data Mining coursework</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/CSE511" target="_blank" rel="noopener">
+        <div class="t">CSE 511</div>
+        <div class="d">ASU Data Processing at Scale</div>
+      </a>
+      <a class="more-card" href="https://github.com/jiseong99/coding_study" target="_blank" rel="noopener">
+        <div class="t">Coding Study</div>
+        <div class="d">Algorithms and coding interview practice</div>
+      </a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div>Ji-Seong Han</div>
+    <div style="margin-top:6px;">
+      <a href="mailto:hanjiseong31@gmail.com">hanjiseong31@gmail.com</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/jiseong99" target="_blank" rel="noopener">github.com/jiseong99</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/jiseong99/" target="_blank" rel="noopener">linkedin.com/in/jiseong99</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
