@@ -50,6 +50,16 @@
 
   /* hero */
   .hero{padding:88px 0 56px;}
+  .hero-inner{display:flex; align-items:flex-start; gap:40px;}
+  .hero-text{flex:1; min-width:0;}
+  .avatar{
+    width:132px; height:132px; border-radius:50%; object-fit:cover;
+    border:2px solid var(--border); flex-shrink:0; background:var(--bg-soft);
+  }
+  @media (max-width:640px){
+    .hero-inner{flex-direction:column-reverse; gap:24px;}
+    .avatar{width:100px; height:100px;}
+  }
   .hero .eyebrow{
     color:var(--accent); font-size:13px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
     margin-bottom:14px;
@@ -197,27 +207,32 @@
 
 <div class="wrap">
   <section class="hero">
-    <div class="eyebrow">AI / ML · Data Engineering</div>
-    <h1>I define problems with data,<br>and validate answers with models.</h1>
-    <p class="lead">
-      From quant research and phishing detection to LLM fine-tuning, recommendation systems,
-      manufacturing quality control, and B2B sales prediction — a collection of projects applying
-      machine learning and deep learning to real data and real business problems.
-    </p>
-    <div class="links">
-      <a class="btn primary" href="https://github.com/jiseong99" target="_blank" rel="noopener">View GitHub</a>
-      <a class="btn ghost" href="https://www.linkedin.com/in/jiseong99/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn ghost" href="Jiseong_Han_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-      <a class="btn ghost" href="mailto:hanjiseong31@gmail.com">Send an Email</a>
-    </div>
-    <div class="tags">
-      <span class="tag">Python</span>
-      <span class="tag">PyTorch / scikit-learn</span>
-      <span class="tag">XGBoost · LightGBM · CatBoost</span>
-      <span class="tag">LLM Fine-tuning (LoRA/QLoRA)</span>
-      <span class="tag">FastAPI</span>
-      <span class="tag">React / TypeScript</span>
-      <span class="tag">SQL / Data Pipelines</span>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="eyebrow">AI / ML · Data Engineering</div>
+        <h1>I define problems with data,<br>and validate answers with models.</h1>
+        <p class="lead">
+          From quant research and phishing detection to LLM fine-tuning, recommendation systems,
+          manufacturing quality control, and B2B sales prediction — a collection of projects applying
+          machine learning and deep learning to real data and real business problems.
+        </p>
+        <div class="links">
+          <a class="btn primary" href="https://github.com/jiseong99" target="_blank" rel="noopener">View GitHub</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/jiseong99/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost" href="Jiseong_Han_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <a class="btn ghost" href="mailto:hanjiseong31@gmail.com">Send an Email</a>
+        </div>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">PyTorch / scikit-learn</span>
+          <span class="tag">XGBoost · LightGBM · CatBoost</span>
+          <span class="tag">LLM Fine-tuning (LoRA/QLoRA)</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">React / TypeScript</span>
+          <span class="tag">SQL / Data Pipelines</span>
+        </div>
+      </div>
+      <img class="avatar" src="Jiseong_han.jpg" alt="Ji-Seong Han">
     </div>
   </section>
 
